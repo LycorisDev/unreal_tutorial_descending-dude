@@ -16,11 +16,20 @@ public:
 	AMovingPlatform();
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 public:	
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	/*
+	UPROPERTY(VisibleAnywhere, Category = "Movement")
+	float MovedDistance = 0;
+	*/
+
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	FVector PlatformVelocity = FVector(100, 0, 0);
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float MaxDistance = 100;
+
+	FVector StartLocation;
 };
