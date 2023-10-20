@@ -14,6 +14,11 @@ void AMovingPlatform::BeginPlay()
 	Super::BeginPlay();
 
 	StartLocation = GetActorLocation();
+
+	//FString Str = "Hello world";
+	//UE_LOG(LogTemp, Display, TEXT("Max distance: %.2f"), MaxDistance);
+	//UE_LOG(LogTemp, Warning, TEXT("%s message is %s"), *GetName(), *Str);
+	//UE_LOG(LogTemp, Error, TEXT("Console log message"));
 }
 
 void AMovingPlatform::Tick(float DeltaTime)
