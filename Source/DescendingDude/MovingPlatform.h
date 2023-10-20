@@ -21,6 +21,7 @@ protected:
 public:	
 	virtual void Tick(float DeltaTime) override;
 
+private: 
 	/*
 	UPROPERTY(VisibleAnywhere, Category = "Movement")
 	float MovedDistance = 0;
@@ -32,4 +33,7 @@ public:
 	float MaxDistance = 100;
 
 	FVector StartLocation;
+
+	void MovePlatform(float DeltaTime);
+	bool ShouldPlatformReturn(FVector CurrentLocation) const;
 };

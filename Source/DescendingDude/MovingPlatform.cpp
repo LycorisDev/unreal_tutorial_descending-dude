@@ -25,12 +25,16 @@ void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	MovePlatform(DeltaTime);
+}
+
+void AMovingPlatform::MovePlatform(float DeltaTime)
+{
 	FVector CurrentLocation = GetActorLocation() + PlatformVelocity * DeltaTime;
 	FHitResult Hit;
 	SetActorLocation(CurrentLocation, true, &Hit);
-	float MovedDistance = FVector::Distance(StartLocation, CurrentLocation);
 
-	if (MovedDistance > MaxDistance)
+	if (ShouldPlatformReturn(CurrentLocation))
 	{
 		FVector MoveDirection = PlatformVelocity.GetSafeNormal();
 		StartLocation += MoveDirection * MaxDistance;
@@ -46,4 +50,10 @@ void AMovingPlatform::Tick(float DeltaTime)
 		Hit.GetActor()->AddActorWorldOffset(Delta);
 		SetActorLocation(CurrentLocation);
 	}
+}
+
+bool AMovingPlatform::ShouldPlatformReturn(FVector CurrentLocation) const
+{
+	float MovedDistance = FVector::Distance(StartLocation, CurrentLocation);
+	return MovedDistance > MaxDistance;
 }
