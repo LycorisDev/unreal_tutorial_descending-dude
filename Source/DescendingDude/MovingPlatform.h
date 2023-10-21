@@ -34,6 +34,10 @@ private:
 
 	FVector StartLocation;
 
+	UPROPERTY(EditAnywhere, Category="Rotation")
+	FRotator RotationVelocity;
+
 	void MovePlatform(float DeltaTime);
+	void RotatePlatform(float DeltaTime);
 	bool ShouldPlatformReturn(FVector CurrentLocation) const;
 };
