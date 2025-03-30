@@ -60,6 +60,6 @@ void AMovingPlatform::RotatePlatform(float DeltaTime)
 
 bool AMovingPlatform::ShouldPlatformReturn(FVector CurrentLocation) const
 {
-	float MovedDistance = FVector::Distance(StartLocation, CurrentLocation);
+	float MovedDistance = FVector::Dist(StartLocation, CurrentLocation);
 	return MovedDistance > MaxDistance;
 }
